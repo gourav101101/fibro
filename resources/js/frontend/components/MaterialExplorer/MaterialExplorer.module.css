@@ -1,0 +1,51 @@
+.grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 65px; align-items: center; }
+.copy :global(.eyebrow) { color: #becbe5; }
+.copy h2 { color: #f4f2ed; font-size: clamp(42px, 4.3vw, 70px); }
+.copy h2 span { color: #becbe5; }
+.intro { margin-top: 26px; max-width: 500px; font-size: 18px; line-height: 1.9; color: #acb5c0; }
+.layerList { margin-top: 33px; max-width: 520px; }
+.layerList > div { border-top: 1px solid #ffffff24; }
+.layerList button { display: flex; align-items: center; gap: 19px; width: 100%; min-height: 60px; background: transparent; color: #d3d8de; border: 0; text-align: left; padding: 15px 0; font-size: 20px; }
+.layerList button > span:first-child { font-size: 13px; color: #becbe5; }
+.layerList button > span:last-child { margin-left: auto; font-size: 19px; font-weight: 400; }
+.layerList .activeItem { border-color: #9aaed3; }
+.activeItem button { color: #becbe5; }
+.layerList p { margin: 0 20px 22px 33px; font-size: 17px; line-height: 1.85; color: #aeb9c5; }
+.visual { min-width: 0; background: #22334f; padding: 32px; }
+.diagramHeading { display: flex; align-items: center; gap: 16px; justify-content: space-between; min-height:44px; color: #b7c5d0; font-size: 12px; letter-spacing: 0; }
+.playback { flex:0 0 44px; width:44px; height:44px; display:grid; place-items:center; border:1px solid #697889; border-radius:50%; color:#e5e5df; background:transparent; font-size:24px; }
+.playback:hover { background:#ffffff12; }
+.stages { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:22px; }
+.stages button { min-height:64px; padding:12px 0 0; border:0; border-top:2px solid #697889; background:transparent; color:#b9c5cf; font-size:13px; line-height:1.5; text-align:left; overflow-wrap:anywhere; }
+.stages button span { display:block; margin-bottom:4px; font-size:11px; }
+.stages button[aria-pressed=true] { color:#f1dfad; border-color:#e1bc70; }
+.visual button:focus-visible { outline:2px solid #f1dfad; outline-offset:5px; }
+.diagram { width: 100%; height: auto; display: block; overflow: visible; }
+.sheet, .construction { transition: transform .9s cubic-bezier(.2,.7,.2,1); transform-box: view-box; }
+.sheet path { transition: stroke .35s; }
+.selectedSheet { filter: drop-shadow(0 8px 10px #0003); }
+.diagramControls { display: flex; gap: 18px; align-items: center; justify-content: space-between; border-top: 1px solid #ffffff20; padding-top: 22px; }
+.diagramControls p { font-size: 14px; color: #acb5c0; }
+.diagramControls p > span { display: block; color: #becbe5; margin-bottom: 4px; font-size: 15px; }
+.diagramControls button { background: transparent; border: 1px solid #697889; color: #e5e5df; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; padding: 9px 12px; font-size: 14px; transition: background .25s; }
+.diagramControls button:hover { background: #253648; }
+.caption { font-size: 13px; color: #91a1b0; margin-top: 20px; line-height: 1.8; max-width: 410px; }
+.diagramControls p { min-height:62px; flex:1 1 160px; }
+.copy h2 { font-size:52px; letter-spacing:0; }
+.layerList { min-height:310px; }
+@media(prefers-reduced-motion:reduce) { .sheet, .construction, .sheet path { transition:none; } }
+@media(max-width: 1050px) { .grid { gap: 30px; } .visual { padding: 22px; } .diagramControls { flex-wrap: wrap; } }
+@media(max-width: 800px) { .grid { grid-template-columns: 1fr; gap: 40px; } .intro, .layerList { max-width: none; } .visual { padding: 24px; } }
+@media(max-width: 480px) { .visual { padding: 18px; } .diagramControls { align-items: stretch; } .diagramControls button { width: 100%; } .copy h2 { font-size: 42px; } }
+@media(min-width: 1100px) and (min-height: 650px) {
+  .grid { gap: 45px; }
+  .copy h2 { font-size: 48px; }
+  .intro { margin-top: 12px; line-height: 1.65; }
+  .layerList { margin-top: 20px; }
+  .layerList button { min-height: 52px; padding-block: 10px; }
+  .layerList p { margin: 0 10px 12px 33px; line-height: 1.6; }
+  .visual { padding: 22px; }
+  .diagram { height: clamp(230px, calc(var(--stage-height) - 242px), 480px); }
+  .diagramControls { padding-top: 14px; gap: 12px; flex-wrap: wrap; }
+  .caption { margin-top: 12px; line-height: 1.6; }
+}

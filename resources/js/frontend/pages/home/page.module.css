@@ -1,0 +1,110 @@
+.introduction { padding-block: 110px 85px; background: var(--color-paper); }
+.introGrid { display: grid; grid-template-columns: 1fr 2fr; gap: 65px; }
+.introSignature { font-family: var(--font-display); font-style: italic; font-size: 37px; color: #596780; }
+.introGrid h2 { font-size: clamp(38px, 3.7vw, 62px); line-height: 1.15; }
+.introGrid h2 span { color: #596780; }
+.introGrid > div > p:not(:first-child) { margin-top: 28px; max-width: 750px; font-size: 19px; line-height: 1.85; }
+.introGrid :global(.text-link) { margin-top: 23px; }
+.capabilityStrip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 75px; }
+.capabilityStrip > div { padding-top: 26px; border-top: 1px solid var(--color-line); }
+.capabilityStrip > div > span { font-size: 12px; letter-spacing: .07em; color: var(--color-accent); }
+.capabilityStrip h3 { font-size: 23px; margin-top: 18px; font-weight: 500; }
+.capabilityStrip p { font-size: 16px; color: var(--color-muted); margin-top: 10px; }
+.materials { background: #f1ece3; }
+.sectionHeading { display: flex; justify-content: space-between; align-items: flex-end; gap: 60px; margin-bottom: 55px; }
+.headingAside { max-width: 355px; font-size: 18px; line-height: 1.8; color: var(--color-muted); padding-bottom: 8px; }
+.materialGrid { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 30px; align-items: start; }
+.materialGrid { align-items:stretch; }
+.materialCard { display:flex; flex-direction:column; min-width:0; }
+.materialCard .materialImage { flex-shrink:0; }
+.materialCard .materialDescription { margin-bottom:12px; }
+.materialCard .materialDetails { margin-top:auto; }
+.materialImage { position: relative; height: 490px; overflow: hidden; background: #e7e5df; border-radius: 8px; }
+.featuredMaterial .materialImage { height: 560px; }
+.materialImage img { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.materialCard:focus-within .materialImage img, .materialCard:has(details[open]) .materialImage img { transform: scale(1.045); }
+.materialUse { position: absolute; inset: auto 0 0; padding: 36px 20px 18px; background: linear-gradient(transparent, #182641e6); color: #fff; font-size: 13px; line-height: 1.5; transition: padding .35s, background-color .35s; }
+.materialCard:focus-within .materialUse, .materialCard:has(details[open]) .materialUse { padding-bottom: 24px; background-color: #18264125; }
+@media(hover: hover) and (pointer: fine) {
+  .materialCard:hover .materialImage img { transform: scale(1.045); }
+  .materialCard:hover .materialUse { padding-bottom: 24px; background-color: #18264125; }
+}
+
+.materialCategory { color: var(--color-accent); text-transform: uppercase; font-size: 12px; font-weight: 650; letter-spacing: .09em; margin: 28px 0 12px; }
+.materialCard h3 { font-size: clamp(26px, 2.1vw, 35px); }
+.materialDescription { font-size: 17px; color: var(--color-muted); margin-top: 14px; line-height: 1.8; }
+.materialDetails { margin-top: 25px; border-top: 1px solid #d0d2d6; font-size: 17px; }
+.materialDetails summary { cursor: pointer; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-weight: 600; list-style: none; }
+.materialDetails summary::-webkit-details-marker { display: none; }
+.materialDetails summary > span { font-size: 27px; font-weight: 400; transition: transform .2s; }
+.materialDetails[open] summary > span { transform: rotate(45deg); }
+.materialDetails > div { padding-bottom: 20px; }
+.attributes { padding-block: 18px; font-size: 14px; color: var(--color-accent); }
+.technology { background: #182641; color: #c7d0dd; padding-block: clamp(80px, 8vw, 135px); }
+.applications { background: #fcfaf6; }
+.manufacturing { background: #f1ece3; }
+.manufacturingGrid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 110px); align-items: center; }
+.factoryVisual { position: relative; min-height: 800px; background: var(--color-navy); border-radius: 8px; overflow: hidden; }
+.factoryVisual img { object-position: center; }
+.factoryVisual > div { position: absolute; inset: auto 24px 24px; padding: 22px 26px; border: 1px solid #ffffff80; border-radius: 6px; display: flex; flex-direction: column; gap: 6px; color: var(--color-navy); background: #fcfaf6ee; backdrop-filter: blur(12px); }
+.factoryVisual > div > span:first-child { color: var(--color-accent); font-size: 11px; letter-spacing: .12em; }
+.factoryVisual > div > span:nth-child(2) { font-size: clamp(24px, 2.3vw, 34px); letter-spacing: -.035em; line-height: 1.25; }
+.factoryVisual > div > p { font-size: 14px; color: var(--color-muted); }
+.manufacturingCopy { min-width: 0; }
+.manufacturingCopy h2 { letter-spacing: -.02em; }
+.manufacturingCopy > p:not(:first-child) { font-size: 18px; color: var(--color-muted); margin-top: 30px; line-height: 1.85; max-width: 540px; }
+.processList { margin: 35px 0 22px; }
+.processList > div { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 18px; padding-block: 18px; border-top: 1px solid #d0d2d6; }
+.processList > div > span { display: grid; place-items: center; align-self: start; width: 34px; height: 34px; border: 1px solid #c8cedb; border-radius: 50%; font-size: 12px; color: var(--color-accent); }
+.processList > div > div { min-width: 0; }
+.processList h3 { font-size: 23px; margin-bottom: 8px; }
+.processList p { font-size: 17px; color: var(--color-muted); }
+.responsibility { padding-block: 105px; background: #eeece7; }
+.responsibilityGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+.responsibilityGrid h2 { font-size: clamp(42px, 4.3vw, 70px); }
+.responsibilityGrid > div > p:not(:first-child) { font-size: 18px; max-width: 520px; margin-top: 28px; color: #4e5869; }
+.responsibilityGrid :global(.text-link) { margin-top: 24px; }
+.priorities > div { display: flex; gap: 25px; padding-block: 26px; border-bottom: 1px solid #d0d2d6; }
+
+.priorities h3 { font-size: 23px; margin-bottom: 10px; }
+.priorities p { font-size: 17px; color: #4e5869; }
+@media(max-width: 1100px) { .introGrid { gap: 40px; grid-template-columns: 1fr 1.7fr; } .materialGrid { gap: 22px; } .materialImage { height: 380px; } .featuredMaterial .materialImage { height: 450px; } .responsibilityGrid { gap: 45px; } .sectionHeading { gap: 35px; } .headingAside { max-width: 285px; } .factoryVisual { min-height: 760px; } }
+@media(max-width: 850px) {
+  .introduction { padding-block: 75px; } .introGrid { grid-template-columns: 1fr; gap: 30px; } .introGrid > div > p:not(:first-child) { font-size: 18px; } .capabilityStrip { grid-template-columns: 1fr; gap: 24px; margin-top: 45px; } .sectionHeading { align-items: flex-start; flex-direction: column; gap: 25px; } .headingAside { max-width: 520px; } .materialGrid { grid-template-columns: 1fr; gap: 45px; } .materialImage, .featuredMaterial .materialImage { height: 480px; } .materialCard h3 { font-size: 32px; } .manufacturingGrid { grid-template-columns: 1fr; } .factoryVisual { min-height: 520px; } .manufacturingCopy { max-width: 650px; } .responsibilityGrid { grid-template-columns: 1fr; gap: 30px; } .responsibility { padding-block: 75px; }
+}
+@media(max-width: 480px) { .materialImage, .featuredMaterial .materialImage { height: 390px; } .introGrid h2 { font-size: 38px; } .introSignature { font-size: 32px; } .materialCard h3 { font-size: 29px; } .factoryVisual { min-height: 430px; } .factoryVisual > div { inset: auto 22px 25px; font-size: 11px; } .priorities { min-width: 0; } }
+
+/* Compose a complete desktop chapter in the space below the sticky header.
+   Expanded material details may grow naturally rather than being clipped. */
+@media(min-width: 1100px) and (min-height: 650px) {
+  .introGrid { gap: 40px; }
+  .introGrid h2 { font-size: clamp(38px, min(3.7vw, 6svh), 58px); }
+  .introGrid > div > p:not(:first-child) { margin-top: 20px; line-height: 1.7; }
+  .capabilityStrip { margin-top: clamp(28px, 5svh, 55px); gap: 30px; }
+  .capabilityStrip > div { padding-top: 18px; }
+  .capabilityStrip h3 { margin-top: 12px; font-size: 22px; }
+  .sectionHeading { gap: 35px; margin-bottom: 22px; }
+  .sectionHeading > div { min-width: 0; }
+  .headingAside { max-width: 300px; font-size: 17px; line-height: 1.65; }
+  .materialGrid { gap: 26px; }
+  .materialImage, .featuredMaterial .materialImage { height: clamp(160px, calc(var(--stage-height) * .31), 420px); }
+  .materialCategory { margin: 16px 0 8px; }
+  .materialCard h3 { font-size: clamp(24px, 1.9vw, 32px); }
+  .materialDescription { margin-top: 8px; line-height: 1.65; }
+  .materialDetails { margin-top: 12px; }
+  .materialDetails summary { padding-block: 12px; min-height: 52px; }
+  .factoryVisual { min-height: 0; height: calc(var(--stage-height) - 2 * var(--stage-padding)); }
+  .manufacturingGrid { gap: clamp(35px, 5vw, 85px); }
+  .manufacturingCopy > p:not(:first-child) { margin-top: 18px; line-height: 1.65; }
+  .processList { margin: 20px 0 12px; }
+  .processList > div { padding-block: 10px; gap: 18px; }
+  .processList h3 { font-size: 21px; margin-bottom: 3px; }
+  .processList p { font-size: 16px; line-height: 1.5; }
+  .responsibilityGrid h2 { font-size: clamp(40px, min(4.3vw, 7svh), 66px); }
+  .responsibilityGrid { gap: 65px; }
+  .priorities > div { padding-block: 20px; }
+}
+@media(min-width: 1100px) and (min-height: 650px) and (max-height: 740px) {
+  .processList { margin-block: 16px 8px; }
+  .processList > div { padding-block: 8px; }
+}

@@ -1,0 +1,59 @@
+.tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-bottom: 1px solid #d0d2d6; margin-bottom: 24px; gap: 0 24px; }
+.tabs button { display: flex; align-items: center; gap: 12px; flex: 1; min-height: 65px; padding: 16px 12px; margin-bottom: -1px; border: 0; border-bottom: 2px solid transparent; background: transparent; font-size: 19px; white-space: nowrap; transition: border-color .2s, color .2s; }
+
+.tabs button svg { display: none; }
+.tabs button[aria-selected="true"] { border-color: var(--color-accent); color: var(--color-accent); background:transparent; font-weight:650; }
+.tabs button[aria-selected="true"] svg { opacity: 1; }
+.tabs button:hover { color: var(--color-accent); }
+.tabs button { white-space: normal; text-align: left; justify-content: flex-start; min-width: 0; font-size: 17px; }
+.panel { display: grid; grid-template-columns: 1.25fr 1fr; background: #f1ece3; }
+.panel[hidden] { display: none; }
+.image { position: relative; min-height: 580px; background: #d5d3ca; overflow: hidden; }
+.panel:not([hidden]) .image img { animation: settle .65s cubic-bezier(.22, 1, .36, 1) both; }
+.panel:not([hidden]) .copy > * { animation: copyEnter .45s ease-out both; }
+.panel:not([hidden]) .copy > :nth-child(2) { animation-delay: .04s; }
+.panel:not([hidden]) .copy > :nth-child(3) { animation-delay: .08s; }
+.panel:not([hidden]) .copy > :nth-child(4) { animation-delay: .12s; }
+.panel:not([hidden]) .copy > button { animation-delay: .16s; }
+.image > span { position: absolute; bottom: 23px; left: 25px; font-size: 12px; color: white; background: #0c1829b3; padding: 7px 10px; letter-spacing: .14em; }
+.copy { align-self: center; padding: 45px clamp(25px, 4vw, 60px); }
+.category { color: var(--color-accent); font-size: 13px; letter-spacing: .14em; }
+.copy h3 { font-size: clamp(38px, 4vw, 66px); font-weight: 500; letter-spacing: -.045em; line-height: 1.12; margin: 28px 0 20px; max-width: 460px; }
+.copy > p { font-size: 18px; line-height: 1.9; color: var(--color-muted); max-width: 460px; }
+.material { margin-top: 28px; padding-top: 20px; border-top: 1px solid #d0d2d6; font-size: 14px; color: #5c6470; }
+.copy :global(.text-link) { margin-top: 12px; }
+.copy :global(.text-link) { color:var(--color-accent); text-decoration:underline; text-underline-offset:6px; text-decoration-color:#2e457d55; }
+@keyframes settle { from { opacity: .35; transform: scale(1.035); } to { opacity: 1; transform: scale(1); } }
+@keyframes copyEnter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media(max-width: 800px) { .tabs { overflow-x: auto; padding-bottom: 3px; } .tabs button { min-width: 165px; } .panel { grid-template-columns: 1fr; } .image { min-height: 350px; } .copy { padding: 32px; } .copy > p { max-width: 450px; } .copy h3 { max-width: 400px; } }
+@media(max-width: 480px) { .image { min-height: 300px; } .tabs button { min-width: 150px; } .copy { padding: 28px; } }
+@media(min-width: 1100px) and (min-height: 650px) {
+  .tabs { margin-bottom: 16px; }
+  .tabs button { min-height: 52px; padding: 10px 8px; font-size: clamp(15px, 1.25vw, 18px); justify-content: center; }
+  /* Allow room for the heading and all three rows of application choices. */
+  .panel { min-height: max(275px, calc(var(--stage-height) - 385px)); }
+  .image { min-height: 0; }
+  .copy { padding: 22px clamp(24px, 3vw, 48px); }
+  .copy h3 { font-size: clamp(34px, min(3vw, 5.2svh), 50px); margin: 12px 0; }
+  .copy > p { line-height: 1.65; }
+  .material { margin-top: 16px; padding-top: 12px; }
+  .copy :global(.text-link) { margin-top: 6px; }
+}
+@media(min-width: 1100px) and (min-height: 650px) and (max-height: 740px) {
+  .copy { padding-block: 10px; }
+  .copy h3 { margin-block: 8px; font-size: 34px; }
+  .material { margin-top: 10px; padding-top: 8px; }
+}
+
+.tabs button { justify-content: flex-start; min-width: 0; }
+@media(max-width:800px) { .tabs { grid-template-columns: repeat(2,minmax(0,1fr)); overflow: visible; gap: 0 16px; } .tabs button { min-width:0; font-size:15px; padding:12px 4px; } }
+@media(prefers-reduced-motion:reduce) { .panel:not([hidden]) .image img,.panel:not([hidden]) .copy > * { animation:none; } }
+
+@media(min-width:1100px) and (min-height:650px) and (max-height:800px) {
+  .tabs { margin-bottom:12px; }
+  .tabs button { min-height:48px; padding-block:8px; }
+  .copy { padding:14px 24px; }
+  .copy h3 { font-size:32px; margin:10px 0; }
+  .copy > p { font-size:16px; line-height:1.6; }
+  .material { margin-top:12px; padding-top:10px; }
+}

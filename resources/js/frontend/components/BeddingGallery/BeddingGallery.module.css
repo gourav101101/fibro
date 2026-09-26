@@ -1,0 +1,11 @@
+.gallery { min-width:0; }
+.stage { position:relative; aspect-ratio:3 / 2; background:#fff; }
+.stage img { object-fit:contain; }
+.caption { display:flex; justify-content:space-between; gap:16px; min-height:52px; align-items:center; padding-block:12px; color:var(--color-muted); font-size:14px; }
+.caption > span:last-child { white-space:nowrap; }
+.thumbnails { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:10px; }
+.thumbnails button { position:relative; min-width:0; aspect-ratio:4 / 3; border:2px solid transparent; background:#fff; padding:0; overflow:hidden; border-radius:4px; }
+.thumbnails img { object-fit:cover; }
+.thumbnails button[aria-pressed=true] { border-color:var(--color-accent); }
+.thumbnails button:focus-visible { outline:2px solid var(--color-accent); outline-offset:3px; }
+@media(max-width:550px) { .thumbnails { grid-template-columns:repeat(3,minmax(0,1fr)); } }

@@ -1,0 +1,28 @@
+.home { padding-block: clamp(40px,5vw,76px); background: var(--color-ivory); }
+.introduction { display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(28px,5vw,80px); align-items:center; margin-bottom:36px; }
+.introduction h2 { font-size:clamp(34px,3.4vw,52px); }
+.introduction > div > p:not(:first-child),.introduction > div:last-child > p { font-size:17px; color:var(--color-muted); }
+.links { display:grid; gap:12px; margin-top:22px; }
+.links a,.statement a { display:flex; align-items:center; gap:16px; font-size:16px; }
+.links a:hover,.content > a:hover { text-decoration:underline; text-underline-offset:5px; }
+.credentials > h2 { font-size:24px; letter-spacing:-.02em; margin-bottom:22px; }
+.logos { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
+.logoCard { background:var(--color-paper); border:1px solid var(--color-line); border-radius:6px; overflow:hidden; padding-bottom:16px; }
+.logoImage { display:grid; place-items:center; background:#fff; height:106px; margin-bottom:16px; }
+.logoImage img { width:180px; max-width:90%; height:90px; object-fit:contain; }
+.logoCard h3 { font-size:17px; margin:0 16px 6px; letter-spacing:-.01em; }
+.logoCard p { font-size:13px; color:var(--color-muted); margin:0 16px; line-height:1.5; }
+.note { max-width:850px; font-size:14px; color:var(--color-muted); margin-top:18px; }
+.content { padding-bottom:80px; }
+.statement { background:var(--color-navy); color:var(--color-paper); padding:clamp(28px,5vw,72px); border-radius:6px; }
+.statement :global(.eyebrow) { color:#becbe5; }
+.statement h2 { color:var(--color-paper); max-width:800px; font-size:clamp(36px,4.5vw,64px); margin-bottom:28px; }
+.topics { margin-block:36px 64px; }
+.topic { display:grid; grid-template-columns:1fr 1.1fr; gap:48px; padding-block:36px; border-bottom:1px solid var(--color-line); }
+.topic h2 { font-size:clamp(30px,3vw,42px); }
+.topic > p { align-self:center; color:var(--color-muted); font-size:18px; }
+.enquiry { display:flex; justify-content:space-between; align-items:center; gap:32px; padding:36px; background:var(--color-ivory); margin-block:56px 32px; border-radius:6px; }
+.enquiry h2 { font-size:32px; margin-bottom:12px; }.enquiry p { max-width:620px; }.enquiry button { flex-shrink:0; }
+@media(min-width:1201px) and (max-height:800px) { .home { padding-block:28px; }.introduction { margin-bottom:24px; }.introduction h2 { font-size:36px; }.logoImage { height:88px; }.logoImage img { height:76px; } }
+@media(max-width:850px) { .introduction,.topic { grid-template-columns:1fr; gap:20px; }.logos { grid-template-columns:repeat(2,minmax(0,1fr)); }.enquiry { flex-direction:column; align-items:flex-start; } }
+@media(max-width:400px) { .logos { gap:10px; }.logoCard h3 { font-size:15px; margin-inline:10px; }.logoCard p { margin-inline:10px; }.credentials > h2 { font-size:22px; } }

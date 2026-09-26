@@ -1,0 +1,27 @@
+﻿# Dependencies
+/vendor/
+/node_modules/
+
+# Local configuration and data
+.env*
+!/.env.example
+/database/*.sqlite*
+/storage/*.key
+/storage/app/build/
+/storage/app/diagram-review/
+/storage/framework/testing/
+
+# Generated frontend assets
+/public/build/
+/public/hot
+/public/images/optimized/
+/resources/views/frontend/generated/
+/resources/data/pages.json
+
+# Tool output
+*.zip
+/.phpunit.result.cache
+/coverage/
+npm-debug.log*
+.DS_Store
+*.pem

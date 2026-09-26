@@ -1,0 +1,34 @@
+.main { background:var(--color-paper); }
+.intro { padding-top:28px; padding-bottom:clamp(36px,5vw,70px); }
+.breadcrumb { display:flex; flex-wrap:wrap; gap:12px; color:var(--color-muted); font-size:13px; margin-bottom:clamp(36px,5vw,72px); }
+.breadcrumb a:hover { color:var(--color-accent); text-decoration:underline; }
+.intro h1 { font-size:clamp(44px,6vw,88px); max-width:1100px; line-height:1.05; margin-bottom:24px; }
+.lead { font-size:clamp(18px,1.6vw,22px); max-width:800px; color:var(--color-muted); }
+.section { padding-block:0 clamp(60px,7vw,110px); }
+.cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px 28px; }
+.card { display:flex; flex-direction:column; border-bottom:1px solid var(--color-line); }
+.cardImage { position:relative; aspect-ratio:1.4; overflow:hidden; background:var(--color-ivory); border-radius:6px; }
+.cardImage img { transition:transform .5s; }.card:hover img{transform:scale(1.035)}
+.cardCopy { padding:24px 0; display:flex; flex:1; flex-direction:column; }
+.cardCopy :global(.eyebrow){font-size:11px}.cardCopy h2 { font-size:clamp(26px,2.4vw,34px); line-height:1.2; letter-spacing:-.025em; }
+.cardCopy > p:not(:first-child) { font-size:16px; color:var(--color-muted); margin:16px 0 24px; }
+.cardCopy > span { display:flex; justify-content:space-between; align-items:center; font-size:15px; color:var(--color-accent); margin-top:auto; }
+.twoColumns,.feature { display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px); }
+.twoColumns { padding-top:70px; }.step { padding:20px 0; border-bottom:1px solid var(--color-line); }.step h3{margin-bottom:6px}
+.next { margin-block:clamp(56px,7vw,100px); padding:clamp(28px,4vw,60px); display:grid;grid-template-columns:1fr 1fr;gap:48px; background:var(--color-ivory); border-radius:6px; }
+.next h2 {font-size:clamp(36px,4vw,56px)}.next > div:last-child{align-self:center}.next p{margin-bottom:20px}.next a{display:flex;align-items:center;gap:12px;margin-top:18px;font-size:15px}
+.detailGrid {display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.detailImage {position:relative;min-height:520px;background:var(--color-ivory);border-radius:6px;overflow:hidden}
+.detailImage > span{position:absolute;left:24px;bottom:24px;background:#182641bb;color:white;padding:6px 12px;font-size:11px;letter-spacing:.12em}
+.brief h2 {font-size:clamp(36px,4vw,58px)}.brief ul{list-style:none;padding:0;margin:24px 0}.brief li{padding:12px 0;border-bottom:1px solid var(--color-line);font-size:17px}.brief>p:not(:first-child){color:var(--color-muted);font-size:17px;margin-bottom:20px}
+.feature {padding-block:48px;border-bottom:1px solid var(--color-line);margin-top:30px}.feature h2{font-size:clamp(32px,3vw,46px)}.feature p{margin-bottom:18px}
+.questions {margin-top:56px;max-width:900px}.questions h2{font-size:38px;margin-bottom:24px}.questions details{border-top:1px solid var(--color-line);padding:20px 0}.questions summary{cursor:pointer;font-size:19px}.questions p{margin-top:16px;font-size:17px;color:var(--color-muted)}
+.relatedTitle{font-size:36px;margin-bottom:32px}
+.technology {background:var(--color-navy);color:white;padding-block:40px;border-radius:6px}.technology h2{color:white}
+.contactGrid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,7vw,100px)}.contactGrid h2{font-size:clamp(38px,4vw,58px)}
+.contactDetails{display:grid;gap:20px;font-style:normal;margin-top:32px;overflow-wrap:anywhere}.contactDetails a{color:var(--color-accent)}
+.contactForm{background:var(--color-ivory);border:1px solid var(--color-line);padding:clamp(24px,3vw,40px);border-radius:8px}.small{font-size:13px;color:var(--color-muted);margin-top:24px}
+@media(max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.detailGrid,.contactGrid{grid-template-columns:1fr}.detailImage{min-height:400px}.next{gap:32px}.twoColumns,.feature{gap:32px}}
+@media(max-width:650px){.cards,.next,.twoColumns,.feature{grid-template-columns:1fr}.intro h1{font-size:42px;overflow-wrap:anywhere}.breadcrumb{font-size:12px}.detailImage{min-height:320px}.technology{border-radius:0}.next{margin-block:48px}}
+@media(prefers-reduced-motion:reduce){.cardImage img{transition:none}.card:hover img{transform:none}}
