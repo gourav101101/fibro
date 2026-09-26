@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Mail\NewEnquiryMail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class WebsiteTest extends TestCase
@@ -27,9 +29,16 @@ class WebsiteTest extends TestCase
 
     public function test_enquiry_is_persisted_with_material_and_language(): void
     {
+        Mail::fake();
+
         $this->postJson('/enquiries', $this->enquiry(['locale' => 'fr', 'type' => 'sample']))->assertCreated();
         $this->assertDatabaseHas('enquiries', ['email' => 'review@example.test', 'type' => 'sample', 'locale' => 'fr', 'material' => 'Fabric to membrane']);
         $this->assertDatabaseCount('enquiries', 1);
+        Mail::assertSent(NewEnquiryMail::class, function (NewEnquiryMail $mail): bool {
+            return $mail->hasTo('fibrolaminates@gmail.com')
+                && $mail->enquiry->email === 'review@example.test'
+                && $mail->enquiry->type === 'sample';
+        });
     }
 
     public function test_invalid_details_and_missing_consent_are_not_saved(): void
@@ -54,7 +63,9 @@ class WebsiteTest extends TestCase
 
     public function test_submission_rate_is_limited(): void
     {
-        for ($i = 0; $i < 5; $i++) $this->postJson('/enquiries', $this->enquiry())->assertCreated();
+        for ($i = 0; $i < 5; $i++) {
+            $this->postJson('/enquiries', $this->enquiry())->assertCreated();
+        }
         $this->postJson('/enquiries', $this->enquiry())->assertStatus(429);
         $this->assertDatabaseCount('enquiries', 5);
     }

@@ -115,4 +115,11 @@ return [
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
 
+    'enquiries' => [
+        'to' => [
+            'address' => env('MAIL_ENQUIRY_TO_ADDRESS', 'fibrolaminates@gmail.com'),
+            'name' => env('MAIL_ENQUIRY_TO_NAME', 'Fibro Laminates'),
+        ],
+    ],
+
 ];

@@ -23,7 +23,22 @@ export default function EnquiryForm({ context }) {
         method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content },
         body: JSON.stringify(data),
       });
-      if (response.status === 201) { setStatus('success'); form.reset(); }
+      if (response.status === 201) {
+        setStatus('success');
+        form.reset();
+        const subject = `${data.type === 'sample' ? 'Sample request' : 'Project enquiry'} from ${data.name}`;
+        const body = [
+          `Name: ${data.name}`,
+          `Email: ${data.email}`,
+          `Company: ${data.company || 'Not provided'}`,
+          `Request: ${data.type}`,
+          `Material: ${data.material || 'Not provided'}`,
+          '',
+          'Requirements:',
+          data.message,
+        ].join('\n');
+        window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
       else if (response.status === 422) {
         const result = await response.json(); setErrors(result.errors ?? {}); setStatus('invalid');
         const field = Object.keys(result.errors ?? {})[0]; form.elements.namedItem(field)?.focus();
