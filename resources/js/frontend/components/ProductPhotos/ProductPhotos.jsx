@@ -5,9 +5,12 @@ import EnquiryButton from '@/components/EnquiryButton/EnquiryButton';
 import styles from './ProductPhotos.module.css';
 
 const photos = [
+  { colour: 'Yellow', image: 'fibro-textile-yellow.jpg', swatch: '#e7dc72', alt: 'Yellow folded textile with a white reverse surface' },
+  { colour: 'Plum', image: 'fibro-textile-plum.jpg', swatch: '#5f075a', alt: 'Plum folded textile with a white reverse surface' },
   { colour: 'Blue', image: 'fibro-textile-blue.jpg', swatch: '#80acd6', alt: 'Blue folded textile with a white reverse surface' },
   { colour: 'Coral', image: 'fibro-textile-coral.jpg', swatch: '#e47180', alt: 'Coral folded textile with a white reverse surface' },
   { colour: 'Lilac', image: 'fibro-textile-lilac.jpg', swatch: '#a78aca', alt: 'Lilac folded textile with a white reverse surface' },
+  { colour: 'Navy', image: 'fibro-textile-navy.jpg', swatch: '#11194e', alt: 'Navy folded textile with a white reverse surface' },
 ];
 
 export default function ProductPhotos() {
