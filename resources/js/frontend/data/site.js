@@ -13,7 +13,10 @@ const questions = [
   ['Shoe design and insole application','Water protection and comfort','Construction and evaluation criteria'],
   ['Seat cover or headliner application','Surface texture and cushioning','Construction and project specifications'],
 ];
-export const products = applications.map((item,index)=>({slug:slugs[index],considerations:questions[index],construction:[0,2,2,2,2,2,1,2,1][index],...item}));
+export const products = applications.map((item,index)=>{
+  const knownIndex = item.slug ? slugs.indexOf(item.slug) : index;
+  return {slug:slugs[knownIndex],considerations:questions[knownIndex] || ['Product application and priorities'],construction:[0,2,2,2,2,2,1,2,1][knownIndex] ?? 'membrane',...item};
+});
 const cms = globalThis.__FIBRO_CMS__ || {};
 const defaultServices = [
   {slug:'hot-melt-coating',name:'Hot-melt coating',title:'A considered starting point.',text:'Apply hot-melt adhesives without water or solvent carriers. Discuss the substrate, finish and bonding requirements of your product.',image:'process-material-study.png',points:['Substrate and surface requirements','Adhesive and bonding requirements','Sampling and evaluation criteria']},

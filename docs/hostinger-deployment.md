@@ -6,6 +6,34 @@ no Next.js runtime, Node.js server, SSR worker or VPS requirement for this setup
 
 ## Requirements
 
+Latest content update (5 October 2026): deploy `public/images/facilities/`, its
+generated responsive images, and `public/documents/fibro-grs-scope-certificate.pdf`
+alongside the four build artifacts. These add the client presentation's real
+facility photos and the full GRS scope document. Earlier ZIPs do not include this
+update; rebuild the package before uploading. No database replacement is needed
+for these facility and certificate additions.
+
+### User-confirmed Hostinger configuration — 2 October 2026
+
+The user reports the site works at `https://test.mdarena.in` with MariaDB at
+`127.0.0.1:3306`, database and username `u308075782_fibro`, `utf8mb4` /
+`utf8mb4_unicode_ci`, file sessions/cache, synchronous queues and log mail.
+These non-secret settings are reflected in `.env.example`. Keep the actual
+database password and existing application key only in the server's private
+`fibro-app/.env`; `.env.example` does not configure Laravel by itself.
+
+The working configuration supplied by the user also enabled local mode and debug
+output and disabled secure session cookies. For the HTTPS deployment use
+`APP_ENV=production`, `APP_DEBUG=false`, `SESSION_SECURE_COOKIE=true` and
+`LOG_LEVEL=warning`. The report does not establish which changed value resolved
+the earlier 500 error; do not assume local/debug mode is required to run the site.
+After changing the server configuration, run `php artisan config:clear` and
+`php artisan optimize` from `fibro-app`. Never generate a new application key
+as part of a routine update. The local developer `.env` remains independent.
+
+Existing ZIP archives are snapshots; rebuild the deployment package to include
+updated templates. They do not supply production secrets automatically.
+
 - PHP 8.3 or newer, with Laravel's standard extensions plus `pdo_mysql`.
 - MariaDB and a database user assigned to the Fibro database.
 - Composer 2 on the host, or a production `vendor` folder built for compatible PHP.
@@ -14,6 +42,44 @@ no Next.js runtime, Node.js server, SSR worker or VPS requirement for this setup
 - HTTPS and a domain configured to serve Laravel's **public** directory.
 
 ## Build before upload
+
+The consolidated October client amendments also require `routes/frontend.php`
+(Circular textiles route), `resources/data/blackout.json`, the ITTA logo and both
+`public/video/fibro-*-explainer.webm` clips with their matching poster WebPs.
+Upload the current `ProductCategoryUpdateSeeder.php`, both category JSON files
+and all four build artifacts together. The targeted seeder now also adds blackout
+curtains, corrects the baby-diaper image/name and creates the new page SEO records.
+After deployment, run the targeted seeder below and `php artisan optimize` to
+refresh routes/views/configuration. Existing ZIP archives predate these changes.
+
+For the October workwear/category-photo update, deploy the rebuilt assets,
+generated views/page registry, new public images, `resources/data/workwear.json`
+and `database/seeders/ProductCategoryUpdateSeeder.php`. Then run
+`php artisan db:seed --class=ProductCategoryUpdateSeeder --force` from `fibro-app`.
+This adds workwear if absent and replaces only the two old image placeholders;
+it preserves other product edits and later uploaded images. Do not rerun the full
+ContentSeeder or import a fresh database for this update.
+
+For the Hostinger "Upload your website files" importer, the prepared
+`fibro-hostinger-upload.zip` includes `fibro-database.sql` (fresh MariaDB schema
+and seeded starter content) with the sibling PHP deployment directories. See
+`docs/hostinger-import-readme.txt`. Select PHP/Laravel hosting if asked; this is not
+a Node.js application. Hostinger still needs to provision the database, configure
+the production `.env` and initialize the application key/admin. Do not import the
+starter SQL over a live database. The importer has not been tested on the account.
+
+To create a clean Hostinger ZIP on Windows, run `npm run lint`, `npm run build`
+and `php artisan test`, then `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-hostinger.ps1`.
+The script installs production Composer dependencies in an isolated staging folder
+and creates `fibro-hostinger-YYYYMMDD-HHMMSS.zip` in the project root. Extract it
+**above** `public_html`; it contains sibling `fibro-app` and `public_html`
+directories plus `START-HERE.txt`. Local `.env`, databases, caches, logs, browser
+profiles and Node dependencies are excluded. Preserve the live `.env`, application
+key, database and uploaded images when updating an existing deployment.
+
+The ZIP layout automatically resolves the sibling `public_html` for Artisan when
+`APP_PUBLIC_PATH` is unset. An explicit `APP_PUBLIC_PATH` must use the correct
+hosting path. Do not zip the entire working directory for deployment.
 
 From the project directory:
 
@@ -29,7 +95,8 @@ The build creates four required deployment artifacts:
 - `resources/views/frontend/generated/` — initial HTML for all public pages, before JavaScript runs.
 - `resources/data/pages.json` — page registry used by Laravel routing, metadata and the sitemap.
 
-Upload these together with the Laravel application and original public assets.
+Upload these together with the Laravel application and original public assets,
+including `public/video/fibro-film.mp4` and `public/video/fibro-film-poster.webp`.
 These generated folders are ignored by Git: a checkout alone is not a deployment.
 Do not upload the local `.env`, local databases, `node_modules`, `storage/app/build`, tests or
 the old Next.js backup. Never upload a `public/hot` development marker.
@@ -43,6 +110,24 @@ composer install --no-dev --optimize-autoloader --no-interaction
 If Composer is unavailable on the host, run this in a separate staging copy on a
 compatible build machine and include its `vendor` folder in the upload.
 
+## XAMPP without /public
+
+Keep the project at `D:/Xampp/htdocs/fibro`. The project-root `.htaccess` and
+`index.php` now serve Laravel at `http://localhost/fibro/`, including assets and
+`http://localhost/fibro/admin/login`. Apache must have `mod_rewrite` enabled and
+`AllowOverride All` for `htdocs` (the current XAMPP configuration already does).
+
+In the local `.env`, use `APP_URL=http://localhost/fibro` and
+`SESSION_SECURE_COOKIE=false`, then run `php artisan config:clear`.
+Browser requests to `/fibro/public/` redirect to `/fibro/`.
+Form submissions from the old URLs use a 307 redirect to preserve the request
+method and body, including login and logout submissions.
+Application directories and hidden files are denied by the root rules; static requests are routed only to
+the known asset directories in `public`.
+
+These root files are for the project-root XAMPP layout. The Hostinger layout below
+uses `public/.htaccess` and `public/index.php` in the web document root.
+
 ## Domain document root
 
 Prefer pointing the domain at the application's `public` directory. The project
@@ -50,19 +135,37 @@ root, `.env`, database files and `vendor` must remain outside the web document r
 
 If your plan fixes the document root to `public_html`, place the application in a
 private sibling directory such as `fibro-app`. Copy the **contents** of its `public`
-directory into `public_html`, including `.htaccess`, images and `build`.
+directory into `public_html`, including `public/.htaccess`, `public/index.php`,
+images, CSS, video and `build`. Use this layout:
 
-For that split arrangement, edit the deployed `public_html/index.php` so its
-maintenance file, autoloader and bootstrap paths point to `../fibro-app/...`.
-After loading the application and before `handleRequest`, add:
-
-```php
-$app->usePublicPath(__DIR__);
+```text
+domain-directory/
+  fibro-app/           Private Laravel application, .env and vendor
+  public_html/         Contents of public/ only
+    .htaccess
+    index.php
+    build/
+    images/
+    css/
+    video/
 ```
+
+The supplied `public/index.php` automatically loads a sibling named `fibro-app`
+when the standard Laravel parent-directory layout is absent, and sets the public
+path to its own directory. No index.php edits are needed for this layout. If you
+choose another private folder name, update the `fibro-app` name in that entry point.
+Keep the project-root `.htaccess` and root `index.php` in the private application;
+do not substitute them for the files from `public/`.
 
 Also set `APP_PUBLIC_PATH` in the server `.env` to the absolute `public_html` path.
 Fibro's application provider supports this variable so Artisan and HTTP requests use the same
 Vite manifest location. Use the actual directory paths from your hosting account.
+Set `APP_URL=https://your-real-domain` without `/public` or `/public_html`.
+
+Enable HTTPS through hPanel for the live domain. Keep the shared `.htaccess` usable
+on local HTTP as well; do not hard-code the production hostname or HTTPS redirect
+into the XAMPP rules. If a `.htaccess` file is not visible in Hostinger's File
+Manager, enable hidden files.
 
 ## Production configuration
 

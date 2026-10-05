@@ -49,3 +49,30 @@
   .diagramControls { padding-top: 14px; gap: 12px; flex-wrap: wrap; }
   .caption { margin-top: 12px; line-height: 1.6; }
 }
+
+/* Budget room for the controls as well as the illustration. */
+.home .visual { border:1px solid #ffffff12; border-radius:8px; }
+.performanceLegend { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; font-size:13px; color:#d6d9d6; }
+.performanceLegend button { border:1px solid #8b969a; border-radius:4px; background:transparent; color:inherit; padding:8px; }
+.rain { animation: rainRepel 2.5s ease-in infinite; }
+.vapour { animation: vapourRise 3s ease-out infinite; }
+.performancePaused * { animation-play-state:paused; }
+@keyframes rainRepel { 0% { transform:translate(0,0); opacity:0; } 15% { opacity:1; } 55% { transform:translate(0,125px); opacity:1; } 80%,100% { transform:translate(45px,65px); opacity:0; } }
+@keyframes vapourRise { 0% { transform:translateY(35px); opacity:0; } 25% { opacity:.9; } 100% { transform:translateY(-170px); opacity:0; } }
+@media(prefers-reduced-motion:reduce) { .rain { animation:none; transform:translateY(110px); } .vapour { animation:none; transform:translateY(-60px); } }
+@media(min-width:1100px) and (min-height:650px) {
+  .home { grid-template-columns:minmax(0,1fr) minmax(0,1.08fr); gap:clamp(32px,4.5vw,70px); }
+  .home .copy h2 { font-size:clamp(38px,min(3.8vw,6svh),54px); letter-spacing:-.035em; }
+  .home .layerList { min-height:270px; }
+  .home .diagram { height:clamp(210px,calc(var(--stage-height) - 343px),400px); }
+  .home .stages { margin-bottom:14px; }
+  .home .diagramControls p { min-height:42px; }
+}
+@media(max-width:800px) {
+  .home .copy h2 { font-size:clamp(32px,9vw,42px); letter-spacing:-.035em; }
+  .home .intro { font-size:17px; line-height:1.7; margin-top:20px; }
+  .home .layerList { min-height:0; margin-top:24px; }
+  .home .layerList button { min-height:54px; padding-block:12px; font-size:18px; }
+  .home .layerList p { font-size:16px; line-height:1.7; margin-bottom:16px; }
+  .home .diagramControls p { min-height:42px; }
+}

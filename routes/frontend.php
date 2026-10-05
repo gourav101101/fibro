@@ -9,7 +9,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/enquiries', [EnquiryController::class, 'store'])
     ->middleware('throttle:5,1')->name('enquiries.store');
 
-foreach (['about', 'products', 'services', 'technology', 'contact', 'sustainability', 'manufacturing-quality'] as $page) {
+foreach (['about', 'products', 'services', 'technology', 'contact', 'sustainability', 'manufacturing-quality', 'circular-textiles'] as $page) {
     Route::get('/'.$page, [PageController::class, 'show'])->name($page);
 }
 Route::get('/{section}/{slug}', [PageController::class, 'show'])

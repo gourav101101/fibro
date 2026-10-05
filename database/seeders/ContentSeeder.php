@@ -158,5 +158,6 @@ class ContentSeeder extends Seeder
         foreach ($pages as $p) {
             Page::updateOrCreate(['page_key' => $p['page_key']], $p);
         }
+        $this->call(ProductCategoryUpdateSeeder::class);
     }
 }

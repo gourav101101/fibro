@@ -1,9 +1,23 @@
+Options -Indexes
+DirectoryIndex index.php
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
 
     RewriteEngine On
+
+    # This directory has its own rules, so redirect legacy /public URLs here too.
+    RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+    RewriteCond %{THE_REQUEST} \s(/[^?\s]*?)?/public(?:/([^?\s]*))?(?:[?\s]) [NC]
+    RewriteRule ^ %1/%2 [R=307,L]
+
+    RewriteCond %{THE_REQUEST} \s(/[^?\s]*?)?/public(?:/([^?\s]*))?(?:[?\s]) [NC]
+    RewriteRule ^ %1/%2 [R=301,L]
+
+    # Do not serve hidden configuration or repository files.
+    RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,L]
 
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

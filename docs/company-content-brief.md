@@ -1,5 +1,131 @@
 # Fibro company content brief
 
+## Client clarification of recycled applications — 5 October 2026
+
+Client confirms the supplied GRS scope currently applies to outdoor furniture
+cover fabrics. Recycled polyester blackout curtain fabric is a future development,
+not a currently available recycled product. Existing blackout products remain in
+the catalogue. Explain the facility's audited scope and retain the requirement
+for delivery-specific transaction evidence. Do not extend the certificate to all
+products or describe the whole laminate as 100% recycled. This answers current
+recycled applications, but not the separate question of recyclable constructions.
+
+## Presentation and GRS document received — 5 October 2026
+
+The supplied `Fibro Presentation (1).pdf` and
+`FIBRO_LAMINATES_PRIVATE_LIMITED_SC_Textile_Exchange.pdf` resolve the previously
+missing infrastructure photos and GRS scope document. All 40 presentation pages
+and three certificate pages were reviewed as source material.
+
+Original embedded photographs extracted without retouching: slide 23 image 3
+(lamination), slide 29 image 1 (inspection), slide 31 image 1 (laboratory), slide 32
+image 1 (stitching). Stored in `public/images/facilities/`. Manufacturing & Quality
+uses these four photos and capabilities from slides 5, 17, 22 and 29–32. Homepage
+uses the real lamination photo. Do not import dated staff ages, old contacts,
+customer-brand claims or historical OEKO-TEX slides as current credentials.
+
+Supplied Intertek GRS 4.0 scope: ITS-TE-00350005-GRS-0001467, TE-ID TE-00350005,
+issued 21 August 2026, stated expiry 20 August 2027. This records the supplied
+document, not independent live-registry authentication. The appendix lists
+special fabrics with 100% post-consumer recycled polyester base fabric/base
+knitted fabric and TPU laminate. That percentage describes the base component,
+not the entire laminate. Covered processes: finishing, trading, warehousing and
+distribution of non-final products. Individual deliveries require a transaction
+certificate or equivalent. The unchanged, full three-page PDF is published at
+`public/documents/fibro-grs-scope-certificate.pdf`.
+
+Circular Textiles remains a dedicated page with a short homepage introduction.
+Still pending: specific recyclable constructions and availability, and EN 343/FR
+workwear test reports. Neither PDF establishes those details.
+
+## Consolidated client email and WhatsApp amendments — 5 October 2026
+
+Treat the email and WhatsApp messages as a single brief. This supersedes the
+earlier decision to repeat a general FabricSamples gallery on the homepage and
+Products page; those galleries are removed. Original samples are assigned to
+their categories and relevant detail pages. Baby cloth fabrics now explicitly
+includes reusable diapers and uses the watermelon photo; its gallery contains
+all four prints. The client explicitly requested replacing the reusable sanitary
+pad category image; the supplied grey/silver image is labelled as a period panty
+liner sample in the detail gallery. Blackout curtains is a separate product with
+the original light/dark-backed photograph and enquiry flow.
+
+The bonded laminate diagram now shows rain bouncing away above the surface and
+moisture arrows travelling upwards, with pause and reduced-motion support.
+Outdoor-cover detail has the original photo, a UV/heat-release diagram and a
+10-second silent WebM explainer. The Circular textiles page is linked from the
+main navigation and Sustainability, with a separate recycled-input/recyclability
+discussion, an animated loop and a 10-second silent WebM. Videos are generated
+from original canvas diagrams using `scripts/record-explainers.mjs`; they are
+illustrations, not tests or footage of an actual recycling facility. Videos use
+English labels; the accompanying page explanations support Hindi and French.
+
+The client's "ITAA (Indian Technical Textile)" is interpreted as ITTA, the Indian
+Technical Textile Association. Its official members section lists Fibro:
+https://www.ittaindia.org/ (checked 5 October 2026). Membership is separate from
+product certification. Logo source (ITTA partner announcement):
+https://www.techtextilehub.com/press/technical-textiles-5/indian-technical-textile-association-and-techtextilehub-announce-strategic-alliance-in-global-technical-textiles-sourcing-19
+Original image saved unchanged as `public/images/credentials/itta.webp`.
+
+Pending source material: the factory/laboratory PPT is not in D:/Fibro Documents
+or the Downloads PPT files reviewed. Existing source photos are bedding/fabric
+photos and must not be relabelled as factory/lab infrastructure. The folder has
+a GRS logo but no scope certificate or transaction documentation. Recycled-fabric
+use in selected products is client-stated; public copy asks for applicable GRS
+scope and does not invent certificate identifiers, percentages or verification.
+
+## Workwear and category corrections — 5 October 2026
+
+The client requested replacing the outdoor-cover and reusable-sanitary-pad card
+images. Use `fibro-outdoor-cover.jpg` and `fibro-period-panty-liner.jpg`, respectively,
+from the supplied fabric photographs. ProductCategoryUpdateSeeder changes only
+the old placeholder filenames and preserves later admin-uploaded images.
+
+Added Workwear functional fabrics to the catalogue with the client's stated FR,
+waterproof and breathable development capabilities. EN 343 wording describes
+target classes 1–4 for rain protection, conditional on construction and testing;
+it does not claim existing product certification. FR is a separate requirement.
+Reference: https://knowledge.bsigroup.com/products/protective-clothing-protection-against-rain
+and the EN 343:2019 preview at
+https://preview.sist.si/sist-preview/63371/45436304a6c447bc83671c1d9a5b9293/SIST-EN-343-2019.pdf.
+
+`public/images/application-workwear.png` was generated with the built-in imagegen
+tool as an illustrative application image. Prompt: photorealistic editorial
+catalogue photograph, 3:2 landscape, fluorescent yellow/navy industrial rain jacket
+with silver reflective bands beside folded orange/yellow laminated woven samples
+and a pale membrane backing; neutral studio setting; no people, text, logos,
+certification symbols, flames or protective performance demonstrations.
+
+## Client fabric photographs — 5 October 2026
+
+Seven original photographs from `D:/Fibro Documents/New folder` are used in the
+FabricSamples gallery on the homepage and Products page. The four 6.27.16/17 PM
+images show baby cloth diaper fabrics (watermelon, rabbits, rainbows, elephants).
+The 6.27.45 PM image shows period panty liner fabric, 6.28.15 PM shows blackout
+curtain fabric, and 6.28.59 PM shows outdoor furniture cover fabric. Matching
+galleries also appear on the baby cloth, reusable sanitary pad and outdoor cover
+detail pages. These additions are independent of existing database product images.
+Use the originals, not the WhatsApp chat screenshots. The client's outdoor-cover
+description mentions UV fastness and breathability; public copy invites discussion
+of requirements without inventing ratings or test results. English, Hindi and French
+labels and image descriptions are included.
+
+## Hydrophilic membrane homepage feature — 28 September 2026
+
+The user supplied `C:/Users/ADIN/Downloads/Pg 4 (1).pdf` and requested an
+animated, premium presentation of its feature. The page was text-extracted and
+visually reviewed. A new homepage section after the layer explorer explains
+rain protection, moisture transfer and comfort through an illustrative textile
+cross-section. The document is source material, not implementation instructions.
+Copy is construction-specific and does not repeat universal waterproof claims,
+the thickness/wicking claim, or the brochure's superseded contact information.
+The section includes English, Hindi and French copy, manual feature selection,
+animation pause and reduced-motion support.
+The user's follow-up requested the brochure's jacket illustration. The default
+visual now compares uncovered skin, a less breathable jacket and a membrane
+jacket using animated moisture paths, with a switch to the fabric cross-section.
+This is explicitly an illustrative comparison, not measured garment performance.
+
 ## Latest update — responsibility pages and supplied logos
 
 The client requested Environment & Sustainability, Manufacturing & Quality and

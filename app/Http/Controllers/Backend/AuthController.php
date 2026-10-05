@@ -37,6 +37,11 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
+    public function showLogout(): View
+    {
+        return view('backend.auth.logout');
+    }
+
     public function logout(Request $request): RedirectResponse
     {
         Auth::guard('admin')->logout();

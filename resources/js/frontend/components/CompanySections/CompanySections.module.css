@@ -65,3 +65,15 @@
   .values { margin-top:12px; }
   .values p { line-height:1.5; }
 }
+
+.homeAbout { background:var(--color-paper); }
+.homeAbout .direction { align-self:center; gap:0; padding:8px 28px; border:1px solid var(--color-line); border-radius:8px; background:var(--color-ivory); }
+.homeAbout .purpose:first-child { border-top:0; }
+@media(max-width:1000px) {
+  .homeAbout .direction { align-self:stretch; gap:28px; }
+  .homeAbout .purpose { border-top:0; }
+}
+@media(max-width:600px) {
+  .homeAbout .direction { gap:0; padding-inline:22px; }
+  .homeAbout .purpose + .purpose { border-top:1px solid var(--color-line); }
+}

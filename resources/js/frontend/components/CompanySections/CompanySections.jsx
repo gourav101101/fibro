@@ -24,7 +24,7 @@ export function AboutFibro({ standalone = false }) {
     ['Our vision', 'Possibilities that move products forward.', 'To be a trusted textile development partner, helping buyers turn new ideas into purposeful products.'],
     ['Our mission', 'Understand. Develop. Refine.', 'To connect material knowledge and thoughtful development with each buyer?s needs, through clear communication and care in every construction.'],
   ];
-  return <Localized><section id="about" className={styles.about} aria-labelledby="about-title"><div className="container">
+  return <Localized><section id="about" className={`${styles.about} ${standalone ? '' : styles.homeAbout}`} aria-labelledby="about-title"><div className="container">
     <div className={styles.aboutGrid}><Reveal><p className="eyebrow">The Fibro story</p><h2 id="about-title">Built on trust.<br /><span className="muted-heading">Driven by possibility.</span></h2>
       <p>At Fibro Laminates, our work begins with a conversation: what does your product need to do?</p>
       <p>Based in Surat, India, we bring together textile knowledge, coating, lamination and digital printing to explore the answer. From a luggage fabric to a protective cover, each brief calls for its own balance of feel, function and finish.</p>

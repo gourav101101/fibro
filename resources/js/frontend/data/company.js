@@ -2,6 +2,8 @@
 // Capabilities/applications: company brochure and client brief of 14 September 2026.
 // See docs/company-content-brief.md and docs/client-homepage-brief.md.
 const cms = globalThis.__FIBRO_CMS__ || {};
+import workwear from '../../../data/workwear.json';
+import blackout from '../../../data/blackout.json';
 const defaultCompany = {
   name: "Fibro Laminates Pvt Ltd",
   email: "fibrolaminates@gmail.com",
@@ -37,4 +39,14 @@ const defaultApplications = [
   { name: "Waterproof insole fabrics", title: "Comfort with every step.", text: "Waterproof insole fabrics and textile-membrane shoe interlinings for footwear development. Discuss construction and testing needs for your shoe design.", material: "Insole fabrics & shoe interlinings", image: "application-footwear.png", alt: "Illustrative outdoor shoe and textile lining swatch" },
   { name: "Automotive", title: "A considered interior.", text: "Foam-laminated textiles for automotive seat covers and headliners. Bring surface texture and cushioning together around your interior specification.", material: "Textile + foam constructions", image: "application-automotive.png", alt: "Illustrative automotive seats in woven textile upholstery" },
 ];
-export const applications = cms.products?.length ? cms.products : defaultApplications;
+// Keep admin uploads intact while replacing the two original placeholder images.
+const correctedImages = {
+  'Outdoor furniture covers': ['product-blackout.jpg', 'fibro-outdoor-cover.jpg', 'Grey woven fabric with silver backing'],
+  'Reusable sanitary pad fabrics': ['product-tpu.jpg', 'fibro-period-panty-liner.jpg', 'Grey fabric with silver reverse side'],
+  'Baby cloth fabrics': ['product-baby.jpg', 'fibro-diaper-watermelon.jpg', 'Watermelon print with reverse side'],
+};
+export const applications = (cms.products?.length ? cms.products : [...defaultApplications, workwear, blackout]).map(item => {
+  const replacement = correctedImages[item.name];
+  const updated = replacement && item.image === replacement[0] ? { ...item, image: replacement[1], alt: replacement[2] } : item;
+  return updated.name === 'Baby cloth fabrics' ? { ...updated, name: 'Reusable baby cloth diaper fabrics', text: 'Printed laminated fabrics for reusable baby cloth diapers, alongside constructions for baby underlays. Discuss surface feel, barrier performance and repeated-care requirements.' } : updated;
+});

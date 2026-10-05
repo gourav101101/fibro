@@ -1,0 +1,31 @@
+.section { padding-block:clamp(32px,5vw,72px); }
+.section h2 { margin:0 0 22px; }
+.section > p { max-width:850px; line-height:1.8; }
+.pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; margin:28px 0; }
+.pair article { padding:28px; background:#f2eee5; }
+.pair article h3 { margin-bottom:18px; }
+.photo { position:relative; min-height:320px; }
+.photo img { object-fit:contain; }
+.diagram { background:#f2eee5; padding:20px; }
+.diagram svg { display:block; width:100%; height:auto; }
+.section button { border:1px solid #a5aaa4; padding:10px 16px; background:transparent; border-radius:4px; color:inherit; }
+.legend { display:flex; justify-content:space-between; gap:12px; margin-bottom:16px; font-size:14px; }
+.legend span:first-child { color:#856013; }
+.legend span:last-child { color:#97482c; }
+.note { color:var(--color-muted); font-size:14px; }
+.clip { margin:24px 0; border:1px solid #d1d7cc; padding:18px; }
+.clip summary { cursor:pointer; font-weight:600; padding:6px; }
+.clip video { width:100%; display:block; margin-top:18px; background:#f7f4ed; }
+.clip p { font-size:14px; color:var(--color-muted); }
+.grs { object-fit:contain; background:white; padding:8px; }
+.loop { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin:32px 0 20px; }
+.loopStep { padding:24px; border:1px solid #bac6b7; background:#edf2e9; animation:cycle 8s linear infinite; }
+.loopStep h3 { font-size:22px; margin:18px 0; }
+.sunray { stroke-dasharray:18 9; animation:rays 2s linear infinite; }
+.heat { animation:heat 3s ease-out infinite; }
+.paused * { animation-play-state:paused; }
+@keyframes rays { to { stroke-dashoffset:-54; } }
+@keyframes heat { 0% { opacity:0; transform:translateY(25px); } 25% { opacity:1; } 100% { opacity:0; transform:translateY(-60px); } }
+@keyframes cycle { 0%,24% { background:#d1dfc8; border-color:#557544; } 25%,100% { background:#edf2e9; } }
+@media(max-width:800px) { .pair { grid-template-columns:1fr; } .loop { grid-template-columns:repeat(2,minmax(0,1fr)); } .loopStep { padding:18px; } }
+@media(prefers-reduced-motion:reduce) { .section * { animation:none; } }

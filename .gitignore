@@ -9,6 +9,10 @@
 /storage/*.key
 /storage/app/build/
 /storage/app/diagram-review/
+/storage/app/hostinger-package-*/
+/storage/app/fibro-database.sql
+/storage/app/client-source-review/
+/storage/app/client-photos-review.jpg
 /storage/framework/testing/
 
 # Generated frontend assets
@@ -25,3 +29,4 @@
 npm-debug.log*
 .DS_Store
 *.pem
+/storage/app/pdf-review/

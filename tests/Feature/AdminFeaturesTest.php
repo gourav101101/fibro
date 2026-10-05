@@ -43,8 +43,11 @@ class AdminFeaturesTest extends TestCase
         $this->post('/admin/login', ['email' => $this->admin->email, 'password' => 'test-password'])
             ->assertRedirect('/admin');
         $this->assertAuthenticatedAs($this->admin, 'admin');
+        $this->get('/admin/logout')->assertOk()->assertSee('Are you sure you want to log out?');
+        $this->assertAuthenticatedAs($this->admin, 'admin');
         $this->post('/admin/logout')->assertRedirect('/admin/login');
         $this->assertGuest('admin');
+        $this->get('/admin/logout')->assertRedirect('/admin/login');
     }
 
     public function test_every_admin_screen_renders_for_an_authenticated_admin(): void

@@ -14,6 +14,8 @@ import ApplicationExplorer from "@/components/ApplicationExplorer/ApplicationExp
 import Reveal from "@/components/Reveal/Reveal";
 import styles from "./page.module.css";
 import WhatsApp from "@/components/WhatsApp/WhatsApp";
+import MembranePerformance from '@/components/MembranePerformance/MembranePerformance';
+import { siteUrl } from '@/utils/siteUrl';
 
 
 
@@ -46,15 +48,17 @@ export default function HomePage() {
           </div>
         </section>
         <ProductPhotos />
-        <section id="technology" className={styles.technology} aria-labelledby="technology-title"><div className="container"><MaterialExplorer /></div></section>
+        <section id="technology" className={styles.technology} aria-labelledby="technology-title"><div className="container"><MaterialExplorer homepage /></div></section>
+        <MembranePerformance />
         <section id="manufacturing" className={`section ${styles.manufacturing}`} aria-labelledby="manufacturing-title">
           <div className={`container ${styles.manufacturingGrid}`}>
-            <Reveal className={styles.factoryVisual}><Image src="/images/process-material-study.png" alt="Conceptual material study with teal, flax and ivory textile swatches, translucent film and a metal straightedge" fill sizes="(max-width: 850px) 100vw, 50vw" /><div><span>MATERIAL STUDY</span><span>Texture. Film. Finish.</span><p>Every detail shapes the whole.</p></div></Reveal>
+            <Reveal className={styles.factoryVisual}><Image src="/images/facilities/lamination.png" alt="Roll-to-roll machinery at Fibro" fill sizes="(max-width: 850px) 90vw, 50vw" /></Reveal>
             <Reveal className={styles.manufacturingCopy}>
               <p className="eyebrow">The craft behind the material</p><h2 id="manufacturing-title">From first idea<br /><span className="muted-heading">to final fabric.</span></h2>
               <p>From your brief to a custom construction: textile knowledge, hot-melt coating and PUR lamination.</p>
               <div className={styles.processList}>{[['Understand','Define the feel, function and application.'],['Develop','Sample the right textile, film and adhesive.'],['Refine','Agree the construction and quality criteria.']].map(([title,text],i)=><div key={title}><span>0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></div>)}</div>
               <EnquiryButton>Build something with us</EnquiryButton>
+              <a className="text-link" href={siteUrl('/manufacturing-quality')}>Explore our factory & laboratory</a>
             </Reveal>
           </div>
         </section>
@@ -62,7 +66,7 @@ export default function HomePage() {
         <ResponsibilityHome />
       </main>
       <Footer />
-      <WhatsApp />
+      <WhatsApp compact />
     </></Localized>
   );
 }

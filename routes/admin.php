@@ -11,6 +11,7 @@ Route::post('/admin/login', [AuthController::class, 'login'])->middleware('throt
 
 // Protected admin routes
 Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
+    Route::get('/logout', [AuthController::class, 'showLogout'])->name('logout.confirm');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 

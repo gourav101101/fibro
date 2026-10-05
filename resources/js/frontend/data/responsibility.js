@@ -1,4 +1,5 @@
 export const responsibilityPages = [
+  { id: 'circular-textiles', path: '/circular-textiles', title: 'Circular textiles', description: 'Recycled inputs and design for recyclability: two distinct approaches to keeping textile materials in use.', type: 'circular-textiles' },
   { id: 'sustainability', path: '/sustainability', title: 'Environment & Sustainability', description: 'A closer look at our hot-melt process and the material questions behind responsible sourcing.', type: 'sustainability' },
   { id: 'manufacturing-quality', path: '/manufacturing-quality', title: 'Manufacturing & Quality', description: 'Coating, lamination and development, with your application and quality requirements at the centre.', type: 'manufacturing-quality' },
 ];

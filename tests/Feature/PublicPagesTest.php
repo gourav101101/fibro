@@ -9,7 +9,7 @@ class PublicPagesTest extends TestCase
     public function test_public_pages_have_prerendered_content_and_correct_canonicals(): void
     {
         $pages = json_decode(file_get_contents(resource_path('data/pages.json')), true, 512, JSON_THROW_ON_ERROR);
-        $this->assertCount(21, $pages);
+        $this->assertCount(24, $pages);
         foreach ($pages as $page) {
             $response = $this->get($page['path'])->assertOk();
             $response->assertSee('<link rel="canonical" href="'.url($page['path']).'">', false);

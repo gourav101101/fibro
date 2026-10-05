@@ -16,11 +16,12 @@ function subscribeMotion(callback) {
 }
 const reducedMotionSnapshot = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export default function MaterialExplorer({ overview }) {
+export default function MaterialExplorer({ overview, homepage = false }) {
   const [active, setActive] = useState(0);
   const [separated, setSeparated] = useState(true);
   const [playing, setPlaying] = useState(true);
   const [visible, setVisible] = useState(false);
+  const [performancePaused, setPerformancePaused] = useState(false);
   const visual = useRef(null);
   const step = useRef(0);
   const reducedMotion = useSyncExternalStore(subscribeMotion, reducedMotionSnapshot, () => true);
@@ -59,7 +60,7 @@ export default function MaterialExplorer({ overview }) {
     setPlaying(true);
   }
   return (
-    <Localized><div className={styles.grid}>
+    <Localized><div className={`${styles.grid} ${homepage ? styles.home : ''}`}>
       <div className={styles.copy}>{overview || <>
         <p className="eyebrow">Lamination technology</p>
         <h2 id="technology-title">The difference is<br /><span>between the layers.</span></h2>
@@ -88,7 +89,12 @@ export default function MaterialExplorer({ overview }) {
               <text x="305" y="264" textAnchor="middle" fill={active === i ? "#0c1829" : "#d6d9d6"} fontSize="10">0{i + 1}</text>
             </g>)}
           </g>
+          {!separated && <g className={`${styles.performance} ${performancePaused ? styles.performancePaused : ''}`} aria-hidden="true">
+            {[170, 265, 365, 445].map((x, i) => <path key={x} className={styles.rain} style={{ animationDelay: `${i * -.6}s` }} d={`M${x} 65q-10 15 0 18q10-3 0-18`} fill="#8bd6ef" />)}
+            {[220, 320, 410].map((x, i) => <path key={x} className={styles.vapour} style={{ animationDelay: `${i * -.7}s` }} d={`M${x} 415v-110m-9 12 9-12 9 12`} fill="none" stroke="#eda879" strokeWidth="4" strokeLinecap="round" />)}
+          </g>}
         </svg>
+        {!separated && <div className={styles.performanceLegend}><p>Rain stays outside. Moisture vapour moves upwards.</p><button type="button" onClick={() => setPerformancePaused(!performancePaused)} aria-pressed={performancePaused}>{performancePaused ? 'Play performance animation' : 'Pause performance animation'}</button></div>}
         <div className={styles.stages} role="group" aria-label="Explore the material layers">{layers.map((layer, i) => <button key={layer.name} type="button" aria-pressed={active === i && separated} onClick={() => selectLayer(i)}><span aria-hidden="true">0{i + 1}</span>{layer.name}</button>)}</div>
         <div className={styles.diagramControls}><p aria-live={running ? "off" : "polite"}><span>{separated ? <>0{active + 1} / {layers[active].name}</> : "PUR adhesive bonding"}</span>{separated ? layers[active].purpose : "One purposeful material."}</p><button type="button" aria-pressed={!separated} onClick={() => { setPlaying(false); setSeparated(!separated); }}>{separated ? "Bring layers together" : "Separate the layers"}<span aria-hidden="true">{separated ? "↓" : "↑"}</span></button></div>
         <p className={styles.caption}>Illustrative three-layer construction. Materials and bonding are selected for each application.</p>

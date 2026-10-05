@@ -12,6 +12,7 @@ const links = [
   ["Products", "/products"],
   ["Services", "/services"],
   ["Technology", "/technology"],
+  ["Circular textiles", "/circular-textiles"],
 ];
 const aboutLinks = [
   ["About Fibro", "/about"],
