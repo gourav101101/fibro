@@ -20,6 +20,7 @@ export default function Footer() {
         <a href="#" className={styles.backTop}>Back to top <span aria-hidden="true">↑</span></a>
       </div>
       <div className={styles.legal}><span>© {new Date().getFullYear()} Fibro Laminates Pvt Ltd.</span><nav className={styles.socials} aria-label="Connect with Fibro"><a href={company.whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="Chat with Fibro on WhatsApp (opens a new tab)"><WhatsAppIcon />WhatsApp</a><span className={styles.platformLabel}>Platform links</span>{company.socialLinks.map(profile => <a key={profile.href} aria-label={profile.accessibleLabel} href={profile.href} target="_blank" rel="noopener noreferrer"><SocialIcon name={profile.label} />{profile.label}<span aria-hidden="true">↗</span></a>)}</nav></div>
+      <p className={styles.credit}><span>Powered by</span>{' '}<a href="https://mdarena.in/" target="_blank" rel="noopener noreferrer"><strong>MAK Digital Arena</strong><span aria-hidden="true"> ↗</span></a></p>
     </div>
   </footer></Localized>;
 }

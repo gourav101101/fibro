@@ -26,6 +26,10 @@
 .backTop span { font-size: 21px; }
 .legal { display: flex; justify-content: space-between; gap: 20px; padding-block: 20px; border-top: 1px solid #ffffff1c; font-size: 13px; color: #98a7b5; }
 .legal { align-items: center; }
+.credit { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:6px; margin:0; padding:12px 0 24px; font-size:13px; color:#bec8d5; }
+.credit a { display:inline-flex; align-items:center; gap:6px; min-height:44px; color:#f6f5ef; text-underline-offset:4px; }
+.credit a:hover { text-decoration:underline; }
+.credit a:focus-visible { outline:2px solid #becbe5; outline-offset:4px; border-radius:2px; }
 .socials { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .platformLabel { align-self: center; font-size: 12px; color: #aeb9c5; padding-inline-start: 12px; border-inline-start: 1px solid #ffffff30; }
 @media(max-width: 650px) { .legal { align-items: flex-start; } .socials { gap: 4px 18px; } .platformLabel { flex-basis: 100%; border: 0; padding: 0; } }

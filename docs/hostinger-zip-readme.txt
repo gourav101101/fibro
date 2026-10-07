@@ -28,6 +28,9 @@ Do not run npm or a Vite server on Hostinger.
      php artisan db:seed --class=ContentSeeder --force
    For an existing installation, preserve its APP_KEY and database; run required
    migrations after backup, and do not reseed existing content unnecessarily.
+   For this website update, apply the targeted category additions and corrections:
+     php artisan db:seed --class=ProductCategoryUpdateSeeder --force
+   This preserves custom product edits and adds the workwear/blackout categories.
    Finally run:
      php artisan optimize
 6. For a new administrator, temporarily fill ADMIN_SEED_NAME, ADMIN_SEED_EMAIL
